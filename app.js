@@ -884,7 +884,7 @@ function createCard(item, searchTerm) {
             ${langWarning}
             <div class="card-meta">
                 <span>👤 ${author}</span>
-                <span>📅 ${date}${showDateMaj ? ` · 🔄 ${dateMaj}` : ''}</span>
+                <span>📅 ${date}</span>
             </div>
             ${item.status ? `<div style="margin-top: 0.5rem;"><span class="badge ${statusClass}">${getStatusFR(item.status)}</span></div>` : ''}
         </article>
