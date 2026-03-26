@@ -47,7 +47,8 @@ let filteredData = [];
 let displayedCount = 0;
 let newIds = []; // IDs des vrais nouveaux objets
 let sessionsData = []; // Données des sessions parlementaires
-let sortDescending = true; // true = récent en premier, false = ancien en premier
+let sortDescending = true;
+let activeThemes = new Set(); // true = récent en premier, false = ancien en premier
 
 // DOM Elements
 const searchInput = document.getElementById('searchInput');
@@ -292,6 +293,21 @@ function setupEventListeners() {
         updateLangSwitcherLinks();
     });
     clearButton.addEventListener('click', clearSearch);
+
+    // Theme toggle buttons
+    document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const theme = btn.dataset.theme;
+            if (activeThemes.has(theme)) {
+                activeThemes.delete(theme);
+                btn.classList.remove('active');
+            } else {
+                activeThemes.add(theme);
+                btn.classList.add('active');
+            }
+            applyFilters();
+        });
+    });
     
     // Download Excel button
     if (downloadBtn) {
@@ -679,6 +695,13 @@ function applyFilters() {
             }
         }
         
+        // Theme badge filter
+        if (activeThemes.size > 0) {
+            const itemThemes = detectThemes(item);
+            const matches = [...activeThemes].every(t => itemThemes.includes(t));
+            if (!matches) return false;
+        }
+
         // Mention filter (qui mentionne le Jura)
         if (mentionValues.length > 0) {
             const mentionMap = {
@@ -771,6 +794,8 @@ function clearSearch() {
     councilFilter.value = '';
     yearFilter.value = '';
     partyFilter.value = '';
+    activeThemes.clear();
+    document.querySelectorAll('.theme-toggle-btn').forEach(btn => btn.classList.remove('active'));
     searchInput.focus();
     applyFilters();
 }

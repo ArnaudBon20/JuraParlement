@@ -2794,6 +2794,54 @@ a.author-row {
     background: var(--border);
 }
 
+/* Groupe boutons toggle thématiques dans la barre de filtres */
+.filter-theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.theme-toggle-btn {
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    border: 2px solid transparent;
+    background: transparent;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    font-family: inherit;
+}
+
+.theme-toggle-btn.badge-theme-jura {
+    border-color: #1D5C9E;
+    color: #1D5C9E;
+}
+.theme-toggle-btn.badge-theme-moutier {
+    border-color: #7C3AED;
+    color: #7C3AED;
+}
+.theme-toggle-btn.badge-theme-rpt {
+    border-color: #B45309;
+    color: #B45309;
+}
+
+.theme-toggle-btn.badge-theme-jura:hover,
+.theme-toggle-btn.badge-theme-jura.active {
+    background: #1D5C9E;
+    color: white;
+}
+.theme-toggle-btn.badge-theme-moutier:hover,
+.theme-toggle-btn.badge-theme-moutier.active {
+    background: #7C3AED;
+    color: white;
+}
+.theme-toggle-btn.badge-theme-rpt:hover,
+.theme-toggle-btn.badge-theme-rpt.active {
+    background: #B45309;
+    color: white;
+}
+
 /* Carte élu active (filtre appliqué) */
 .elu-card-filter {
     transition: box-shadow 0.15s, opacity 0.15s;

@@ -40,6 +40,7 @@ let displayedCount = 0;
 let newIds = []; // IDs des nouveaux débats (< 4 jours)
 let objectsData = {}; // Mapping business_number -> tags pour le filtre thématique
 let sortDescending = true; // true = récent en premier, false = ancien en premier
+let activeThemes = new Set();
 
 const searchInput = document.getElementById('searchInput');
 const clearSearch = document.getElementById('clearSearch');
@@ -570,12 +571,29 @@ function setupEventListeners() {
             checkboxes.forEach(cb => cb.checked = false);
             updateFilterCount(dropdown.id);
         });
+        activeThemes.clear();
+        document.querySelectorAll('.theme-toggle-btn').forEach(btn => btn.classList.remove('active'));
         // Clear new updates filter
         window.newUpdatesFilter = false;
         if (showNewUpdatesBtn) {
             showNewUpdatesBtn.classList.remove('active');
         }
         applyFilters();
+    });
+
+    // Theme toggle buttons
+    document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const theme = btn.dataset.theme;
+            if (activeThemes.has(theme)) {
+                activeThemes.delete(theme);
+                btn.classList.remove('active');
+            } else {
+                activeThemes.add(theme);
+                btn.classList.add('active');
+            }
+            applyFilters();
+        });
     });
     
     // Show new updates button
@@ -720,6 +738,13 @@ function applyFilters() {
             if (!hasMatchingTag) {
                 return false;
             }
+        }
+
+        // Filtre badges thématiques (Jura / Moutier / RPT)
+        if (activeThemes.size > 0) {
+            const itemThemes = detectThemesDebate(item);
+            const matches = [...activeThemes].every(t => itemThemes.includes(t));
+            if (!matches) return false;
         }
         
         return true;
