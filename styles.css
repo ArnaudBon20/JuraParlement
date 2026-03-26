@@ -576,8 +576,8 @@ main {
 }
 
 .badge-mention {
-    background: #9e9e9e;
-    color: white;
+    background: transparent;
+    color: inherit;
     font-size: 0.9rem;
 }
 
