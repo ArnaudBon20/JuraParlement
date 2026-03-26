@@ -7,8 +7,8 @@ const ITEMS_PER_PAGE = 9;
 const ELUS_ACTUELS = [
     { nom: 'Juillard', prenom: 'Charles', pattern: /Charles\s+Juillard|Juillard\s+Charles/i, conseil: 'CE', parti: 'Le Centre', color: '#FF9900' },
     { nom: 'Crevoisier Crelier', prenom: 'Mathilde', pattern: /Mathilde\s+Crevoisier|Crevoisier\s+(Crelier\s+)?Mathilde/i, conseil: 'CE', parti: 'PS', color: '#E41019' },
-    { nom: 'Stettler', prenom: 'Thomas', pattern: /Thomas\s+Stettler|Stettler\s+Thomas/i, conseil: 'CN', parti: 'Le Centre', color: '#FF9900' },
-    { nom: 'Dobler', prenom: 'Loïc', pattern: /Lo[iï]c\s+Dobler|Dobler\s+Lo[iï]c/i, conseil: 'CN', parti: 'Le Centre', color: '#FF9900' }
+    { nom: 'Stettler', prenom: 'Thomas', pattern: /Thomas\s+Stettler|Stettler\s+Thomas/i, conseil: 'CN', parti: 'UDC', color: '#009F4D' },
+    { nom: 'Dobler', prenom: 'Loïc', pattern: /Lo[iï]c\s+Dobler|Dobler\s+Lo[iï]c/i, conseil: 'CN', parti: 'PS', color: '#E41019' }
 ];
 
 // Anciens élus jurassiens
