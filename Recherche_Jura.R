@@ -58,7 +58,7 @@ FICHIER_EXCEL <- "Objets_parlementaires_Jura.xlsx"
 FICHIER_JSON <- "jura_data.json"
 FICHIER_NEW_IDS <- "new_ids_tracking.json"  # Suivi des nouveautés avec dates
 JOURS_NOUVEAUTE <- 4  # Durée d'affichage des marques vertes
-GITHUB_RAW_URL <- "https://raw.githubusercontent.com/ArnaudBon20/JuraParlement/main/jura_data.json"
+GITHUB_RAW_URL <- "https://raw.githubusercontent.com/SwissParlMonitoring/Jura/main/jura_data.json"
 
 # Objets à exclure (faux positifs)
 # Ajouter ici les numéros d'objets à exclure si nécessaire
@@ -1097,7 +1097,7 @@ if (!is.null(Resultats) && nrow(Resultats) > 0) {
   cat("\nFichiers exportés:\n")
   cat(" -", FICHIER_EXCEL, "\n")
   cat(" -", FICHIER_JSON, "(pour GitHub)\n")
-  cat("\n⚠️  N'oubliez pas de commit/push les fichiers sur GitHub (ArnaudBon20/JuraParlement)!\n")
+  cat("\n⚠️  N'oubliez pas de commit/push les fichiers sur GitHub (SwissParlMonitoring/Jura)!\n")
   
 } else {
   cat("Aucun résultat à exporter.\n")
