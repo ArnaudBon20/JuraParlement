@@ -19,7 +19,7 @@ const typeLabels = {
 
 // Traduction des partis
 function translateParty(party) {
-    if (!party || party === 'None' || party === 'null') return 'Conseil fédéral';
+    if (!party || party === 'None' || party === 'null') return null;
     const translations = {
         'V': 'UDC',
         'S': 'PS',
@@ -64,6 +64,13 @@ function getAuthorDisplay(author, party) {
         return `${translated.nom} (${translated.parti})`;
     }
     return typeof translated === 'object' ? translated.nom : author;
+}
+
+// Dériver le parti depuis l'auteur (groupes parlementaires)
+function getPartyFromAuthor(author) {
+    if (!author) return null;
+    const t = translateAuthor(author);
+    return (typeof t === 'object' && t.parti) ? t.parti : null;
 }
 
 // Vérifier si le titre est manquant
@@ -621,10 +628,10 @@ function displayNewObjectsDuringSession(allItems, newIds, activeSession) {
     
     let html = '';
     for (const item of objectsToShow) {
-        const party = translateParty(item.party);
+        const party = translateParty(item.party) || getPartyFromAuthor(item.author) || 'Autre';
         const type = item.type;
         const typeColor = typeColors[type] || '#6B7280';
-        const partyColor = partyColors[party] || partyColors[item.party] || '#6B7280';
+        const partyColor = partyColors[party] || '#6B7280';
         const mentionData = getMentionEmojis(item.mention);
         
         // Gestion titre manquant
@@ -689,10 +696,10 @@ function displayObjectsList(summary, newIds = [], allItems = []) {
         const itemDateStr = itemData?.date_maj || itemData?.date || '';
         const itemDate = itemDateStr ? new Date(itemDateStr + 'T12:00:00') : null;
         const isNew = itemDate ? itemDate >= fourDaysAgo : false;
-        const party = translateParty(interventions.party[i]);
+        const party = translateParty(interventions.party[i]) || getPartyFromAuthor(interventions.author[i]) || 'Autre';
         const type = interventions.type[i];
         const typeColor = typeColors[type] || '#6B7280';
-        const partyColor = partyColors[party] || partyColors[interventions.party[i]] || '#6B7280';
+        const partyColor = partyColors[party] || '#6B7280';
         
         // Récupérer la mention depuis les items
         const mentionData = getMentionEmojis(itemData?.mention);
