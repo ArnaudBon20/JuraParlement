@@ -3,13 +3,21 @@ const DATA_URL = 'jura_data.json';
 const DEBATES_URL = 'debates_data.json';
 const ITEMS_PER_PAGE = 6;
 
-// Élus jurassiens (noms complets pour éviter confusion, ex: Marcel Dobler ≠ Loïc Dobler)
-const ELUS_JURASSIENS = [
-    { nom: 'Juillard', prenom: 'Charles', pattern: /Charles\s+Juillard|Juillard\s+Charles/i },
-    { nom: 'Crevoisier', prenom: 'Mathilde', pattern: /Mathilde\s+Crevoisier|Crevoisier\s+(Crelier\s+)?Mathilde/i },
-    { nom: 'Stettler', prenom: 'Thomas', pattern: /Thomas\s+Stettler|Stettler\s+Thomas/i },
-    { nom: 'Dobler', prenom: 'Loïc', pattern: /Lo[iï]c\s+Dobler|Dobler\s+Lo[iï]c/i }
+// Élus jurassiens actuels
+const ELUS_ACTUELS = [
+    { nom: 'Juillard', prenom: 'Charles', pattern: /Charles\s+Juillard|Juillard\s+Charles/i, conseil: 'CE', parti: 'Le Centre' },
+    { nom: 'Crevoisier Crelier', prenom: 'Mathilde', pattern: /Mathilde\s+Crevoisier|Crevoisier\s+(Crelier\s+)?Mathilde/i, conseil: 'CE', parti: 'PS' },
+    { nom: 'Stettler', prenom: 'Thomas', pattern: /Thomas\s+Stettler|Stettler\s+Thomas/i, conseil: 'CN', parti: 'Le Centre' },
+    { nom: 'Dobler', prenom: 'Loïc', pattern: /Lo[iï]c\s+Dobler|Dobler\s+Lo[iï]c/i, conseil: 'CN', parti: 'Le Centre' }
 ];
+
+// Anciens élus jurassiens
+const ANCIENS_ELUS = [
+    { nom: 'Fridez', prenom: 'Pierre-Alain', pattern: /Pierre[- ]?Alain\s+Fridez|Fridez\s+Pierre[- ]?Alain/i, conseil: 'CN', parti: 'PS', fin: '2023' }
+];
+
+// Tous les élus (actuels + anciens)
+const ELUS_JURASSIENS = [...ELUS_ACTUELS, ...ANCIENS_ELUS];
 
 // State
 let allObjets = [];

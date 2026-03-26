@@ -343,14 +343,16 @@ cat("Total objets trouvés en français:", nrow(Geschaefte_FR), "\n\n")
 cat("Recherche des objets déposés par les élus jurassiens...\n")
 
 # Patterns des élus jurassiens (noms complets pour éviter confusion)
-# Charles Juillard (CE), Mathilde Crevoisier Crelier (CE), Thomas Stettler (CN), Loïc Dobler (CN)
+# Élus actuels: Charles Juillard (CE), Mathilde Crevoisier Crelier (CE), Thomas Stettler (CN), Loïc Dobler (CN)
+# Anciens élus: Pierre-Alain Fridez (CN, jusqu'en 2023)
 # IMPORTANT: Loïc Dobler ≠ Marcel Dobler (ce dernier est de St-Gall)
 PATTERN_ELUS_JU <- regex(
   paste0(
     "Charles\\s+Juillard|Juillard\\s+Charles|",
     "Mathilde\\s+Crevoisier|Crevoisier\\s+(Crelier\\s+)?Mathilde|",
     "Thomas\\s+Stettler|Stettler\\s+Thomas|",
-    "Lo[iï]c\\s+Dobler|Dobler\\s+Lo[iï]c"
+    "Lo[iï]c\\s+Dobler|Dobler\\s+Lo[iï]c|",
+    "Pierre[- ]?Alain\\s+Fridez|Fridez\\s+Pierre[- ]?Alain"
   ),
   ignore_case = TRUE
 )
