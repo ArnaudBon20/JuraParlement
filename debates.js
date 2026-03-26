@@ -109,16 +109,25 @@ function getPartyDisplay(item) {
 
 async function init() {
     try {
-        // Charger les débats, les objets et les tags manquants en parallèle
-        const [debatesResponse, objectsResponse, missingTagsResponse] = await Promise.all([
+        // Charger les débats et les objets en parallèle
+        const [debatesResponse, objectsResponse] = await Promise.all([
             fetch('debates_data.json'),
-            fetch('jura_data.json'),
-            fetch('missing_objects_tags.json').catch(() => ({ json: () => ({ items: [] }) }))
+            fetch('jura_data.json')
         ]);
         
         const data = await debatesResponse.json();
         const objectsJson = await objectsResponse.json();
-        const missingTagsJson = await missingTagsResponse.json();
+        
+        // Charger les tags manquants (optionnel)
+        let missingTagsJson = { items: [] };
+        try {
+            const missingTagsResponse = await fetch('missing_objects_tags.json');
+            if (missingTagsResponse.ok) {
+                missingTagsJson = await missingTagsResponse.json();
+            }
+        } catch (e) {
+            // Fichier non trouvé, on continue sans
+        }
         
         allData = data.items || [];
         newIds = data.new_ids || [];

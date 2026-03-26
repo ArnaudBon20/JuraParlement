@@ -1655,10 +1655,10 @@ a.author-row {
 }
 
 .home-section h2 {
-    color: var(--primary);
+    color: #D00000;
     margin-bottom: 1rem;
     font-size: 1.3rem;
-    border-bottom: 2px solid var(--primary);
+    border-bottom: 2px solid #D00000;
     padding-bottom: 0.5rem;
 }
 
@@ -1763,7 +1763,7 @@ a.author-row {
     display: inline-block;
     margin-top: 1rem;
     padding: 0.75rem 1.5rem;
-    background: var(--primary);
+    background: #D00000;
     color: white;
     text-decoration: none;
     border-radius: 6px;
@@ -1772,7 +1772,7 @@ a.author-row {
 }
 
 .btn-view-all:hover {
-    background: var(--primary-dark);
+    background: #a00000;
 }
 
 /* Liste objets */
@@ -1865,8 +1865,8 @@ a.author-row {
 
 /* Hero Banner */
 .hero-banner {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-    color: white;
+    background: #f8f8f8;
+    color: #D00000;
     padding: 1rem 1.5rem;
     border-radius: 12px;
     margin-top: 1.5rem;
@@ -1875,6 +1875,7 @@ a.author-row {
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 2px solid #D00000;
 }
 
 .hero-banner h2 {
@@ -1882,6 +1883,7 @@ a.author-row {
     margin: 0;
     font-weight: 600;
     line-height: 1.4;
+    color: #D00000;
 }
 
 /* LLM Summary Disclaimer */

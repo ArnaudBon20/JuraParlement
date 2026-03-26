@@ -34,6 +34,24 @@ function translateParty(party) {
     return translations[party] || party;
 }
 
+// Traduction des auteurs (groupes parlementaires)
+function translateAuthor(author) {
+    if (!author || author === 'null' || author === 'None') return '';
+    const translations = {
+        'Grüne Fraktion': 'Groupe des VERT-E-S',
+        'Fraktion der Schweizerischen Volkspartei': 'Groupe de l\'Union démocratique du centre',
+        'SVP-Fraktion': 'Groupe de l\'Union démocratique du centre',
+        'FDP-Liberale Fraktion': 'Groupe libéral-radical',
+        'Sozialdemokratische Fraktion': 'Groupe socialiste',
+        'Fraktion der Mitte': 'Groupe du Centre',
+        'Die Mitte-Fraktion. Die Mitte. EVP.': 'Groupe du Centre',
+        'Grünliberale Fraktion': 'Groupe vert\'libéral',
+        'Sicherheitspolitische Kommission Nationalrat': 'Commission de la politique de sécurité CN',
+        'Sicherheitspolitische Kommission Ständerat': 'Commission de la politique de sécurité CE'
+    };
+    return translations[author] || author;
+}
+
 // Vérifier si le titre est manquant
 function isTitleMissing(title) {
     if (!title) return true;
@@ -494,7 +512,7 @@ async function displaySessionSummary(summary, currentSession) {
             const cn = summary.by_council?.CN || 0;
             const ce = summary.by_council?.CE || 0;
             
-            let text = `Durant la ${sessionName}, ${count} interventions mentionnant le CDF ont été déposées ou ont fait l'objet d'une réponse du Conseil fédéral qui cite le CDF : ${typesText.join(', ')}. `;
+            let text = `Durant la ${sessionName}, ${count} interventions mentionnant le Jura ont été déposées ou ont fait l'objet d'une réponse du Conseil fédéral qui cite le Jura : ${typesText.join(', ')}. `;
             if (cn > 0 && ce > 0) {
                 text += `${cn} au Conseil national et ${ce} au Conseil des États. `;
             }
@@ -579,7 +597,7 @@ function displayNewObjectsDuringSession(allItems, newIds, activeSession) {
                 <div class="card-title">${displayTitle}</div>
                 ${langWarning}
                 <div class="card-footer">
-                    <span class="card-author">${item.author}</span>
+                    <span class="card-author">${translateAuthor(item.author)}</span>
                     <span class="card-party" style="background: ${partyColor};">${party}</span>
                     <span class="card-mention" title="${mentionData.tooltip}">${mentionData.emojis}</span>
                 </div>
@@ -646,7 +664,7 @@ function displayObjectsList(summary, newIds = [], allItems = []) {
                 <div class="card-title">${displayTitle}</div>
                 ${langWarning}
                 <div class="card-footer">
-                    <span class="card-author">${interventions.author[i]}</span>
+                    <span class="card-author">${translateAuthor(interventions.author[i])}</span>
                     <span class="card-party" style="background: ${partyColor};">${party}</span>
                     <span class="card-mention" title="${mentionData.tooltip}">${mentionData.emojis}</span>
                 </div>
