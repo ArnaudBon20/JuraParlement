@@ -170,6 +170,7 @@ async function init() {
 
 function getCheckedValues(dropdownId) {
     const dropdown = document.getElementById(dropdownId);
+    if (!dropdown) return [];
     const checkboxes = dropdown.querySelectorAll('input[type="checkbox"]:not([data-select-all])');
     const selectAll = dropdown.querySelector('[data-select-all]');
     if (selectAll && selectAll.checked) return [];
@@ -178,6 +179,7 @@ function getCheckedValues(dropdownId) {
 
 function setupDropdown(dropdownId) {
     const dropdown = document.getElementById(dropdownId);
+    if (!dropdown) return;
     const btn = dropdown.querySelector('.filter-btn');
     const menu = dropdown.querySelector('.filter-menu');
     const selectAll = dropdown.querySelector('[data-select-all]');
@@ -1203,7 +1205,7 @@ function renderTopAuthors() {
     
     filteredData.forEach(item => {
         const author = item.author;
-        if (author && !author.includes('Commission') && !author.includes('Kommission') && !author.includes('Fraktion')) {
+        if (author && author !== 'Jura' && !author.includes('Commission') && !author.includes('Kommission') && !author.includes('Fraktion')) {
             authorCounts[author] = (authorCounts[author] || 0) + 1;
             if (item.party) {
                 authorParties[author] = normalizeParty(item.party);
