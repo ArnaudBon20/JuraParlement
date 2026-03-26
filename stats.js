@@ -117,15 +117,22 @@ async function init() {
         const sessionsJson = await sessionsResponse.json();
         sessionsData = sessionsJson.sessions || [];
         
-        // Charger les données des objets parlementaires et tags manquants
-        const [response, missingTagsResponse] = await Promise.all([
-            fetch('jura_data.json'),
-            fetch('missing_objects_tags.json').catch(() => ({ json: () => ({ items: [] }) }))
-        ]);
+        // Charger les données des objets parlementaires
+        const response = await fetch('jura_data.json');
         const data = await response.json();
-        const missingTagsJson = await missingTagsResponse.json();
         allData = data.items || [];
         filteredData = [...allData];
+        
+        // Charger les tags manquants (optionnel)
+        let missingTagsJson = { items: [] };
+        try {
+            const missingTagsResponse = await fetch('missing_objects_tags.json');
+            if (missingTagsResponse.ok) {
+                missingTagsJson = await missingTagsResponse.json();
+            }
+        } catch (e) {
+            // Fichier non trouvé, on continue sans
+        }
         
         // Créer le mapping des tags pour les débats
         allData.forEach(item => {
