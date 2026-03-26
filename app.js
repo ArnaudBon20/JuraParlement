@@ -14,8 +14,10 @@ function detectThemes(item) {
         item.text_de || ''
     ].join(' ').toLowerCase();
     
-    // Patterns de recherche
-    if (/\bjura\b/i.test(textToSearch)) {
+    // Si le champ mention est défini, le R script a détecté Jura → badge Jura toujours présent
+    if (item.mention) {
+        themes.push('Jura');
+    } else if (/\bjura\b/i.test(textToSearch)) {
         themes.push('Jura');
     }
     if (/\bmoutier\b/i.test(textToSearch)) {
@@ -906,12 +908,14 @@ function createCard(item, searchTerm) {
     return `
         <article class="card${isNew ? ' card-new' : ''}">
             <div class="card-header">
-                <span class="card-id">${shortId}</span>
-                <div class="card-badges">
+                <div class="card-header-left">
                     <span class="badge badge-type">${translateType(item.type)}</span>
                     <span class="badge badge-council">${item.council === 'NR' ? 'CN' : 'CE'}</span>
                     ${getThemeBadges(item)}
+                </div>
+                <div style="display:flex;align-items:center;gap:0.4rem;">
                     <span class="badge badge-mention" title="${mentionData.tooltip}">${mentionData.emojis}</span>
+                    <span class="card-id">${shortId}</span>
                 </div>
             </div>
             <h3 class="card-title">
