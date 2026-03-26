@@ -202,8 +202,31 @@ for (session_id in SESSIONS_DEBATS) {
     Debats_IT <- NULL
   }
   
+  # Recherche des interventions des élus jurassiens (canton JU)
+  cat("  Recherche élus JU...")
+  Debats_JU <- tryCatch({
+    get_data(table = "Transcript", Language = "FR", IdSession = session_id) |>
+      filter(!is.na(Text) & CantonAbbreviation == "JU") |>
+      mutate(Text = strip_html(Text), Langue = "JU") |>
+      select(
+        ID, IdSession, IdSubject, SortOrder, MeetingDate, MeetingCouncilAbbreviation, 
+        SpeakerFullName, SpeakerFunction, ParlGroupAbbreviation, CantonAbbreviation,
+        Text, Langue, Start, End
+      )
+  }, error = function(e) {
+    cat(" erreur:", e$message, "\n")
+    NULL
+  })
+  
+  if (!is.null(Debats_JU) && nrow(Debats_JU) > 0) {
+    cat(" ", nrow(Debats_JU), "trouvés\n")
+  } else {
+    cat(" 0 trouvés\n")
+    Debats_JU <- NULL
+  }
+  
   # Combiner
-  session_debats <- bind_rows(Debats_DE, Debats_FR, Debats_IT)
+  session_debats <- bind_rows(Debats_DE, Debats_FR, Debats_IT, Debats_JU)
   Debats_Tous <- bind_rows(Debats_Tous, session_debats)
 }
 

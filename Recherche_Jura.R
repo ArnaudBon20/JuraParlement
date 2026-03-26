@@ -337,6 +337,61 @@ Geschaefte_FR <- bind_rows(Geschaefte_FR)
 cat("Total objets trouvés en français:", nrow(Geschaefte_FR), "\n\n")
 
 # ============================================================================
+# RECHERCHE DES OBJETS DÉPOSÉS PAR LES ÉLUS JURASSIENS
+# ============================================================================
+
+cat("Recherche des objets déposés par les élus jurassiens...\n")
+
+# IDs des élus jurassiens (MemberCouncil IDs)
+# Charles Juillard (CE), Mathilde Crevoisier Crelier (CE), Thomas Stettler (CN), Loïc Dobler (CN)
+ELUS_JURASSIENS <- c("Juillard", "Crevoisier", "Stettler", "Dobler")
+
+Geschaefte_Elus <- list()
+
+for (sid in SessionID) {
+  cat("  Session", sid, "...")
+  
+  tmp <- tryCatch({
+    objets <- get_data(
+      table = "Business",
+      SubmissionSession = sid,
+      Language = "FR"
+    ) |>
+      filter(BusinessType %in% Geschaeftstyp)
+    
+    # Filtrer par auteur (nom contient un des élus)
+    if (nrow(objets) > 0 && "SubmittedBy" %in% names(objets)) {
+      objets_elus <- objets |>
+        filter(
+          str_detect(SubmittedBy, regex(paste(ELUS_JURASSIENS, collapse = "|"), ignore_case = TRUE))
+        ) |>
+        mutate(
+          SessionID = sid,
+          Langue_Detection = "Élu JU"
+        ) |>
+        select(SessionID, ID, BusinessShortNumber, Title, BusinessTypeAbbreviation, 
+               SubmissionDate, BusinessStatusText, Langue_Detection)
+      objets_elus
+    } else {
+      NULL
+    }
+  }, error = function(e) {
+    cat(" erreur:", e$message, "\n")
+    return(NULL)
+  })
+  
+  if (!is.null(tmp) && nrow(tmp) > 0) {
+    Geschaefte_Elus[[as.character(sid)]] <- tmp
+    cat(" ", nrow(tmp), "objets d'élus trouvés\n")
+  } else {
+    cat(" 0 objets d'élus\n")
+  }
+}
+
+Geschaefte_Elus <- bind_rows(Geschaefte_Elus)
+cat("Total objets des élus jurassiens:", nrow(Geschaefte_Elus), "\n\n")
+
+# ============================================================================
 # NOTE: Les débats parlementaires sont gérés par Recherche_Debats.R
 # ============================================================================
 
@@ -346,7 +401,7 @@ cat("Total objets trouvés en français:", nrow(Geschaefte_FR), "\n\n")
 
 cat("Fusion et dédoublonnage des interventions...\n")
 
-Tous_Geschaefte <- bind_rows(Geschaefte_DE, Geschaefte_FR)
+Tous_Geschaefte <- bind_rows(Geschaefte_DE, Geschaefte_FR, Geschaefte_Elus)
 
 # Vérifier si des nouveaux objets ont été trouvés
 if (nrow(Tous_Geschaefte) == 0 || !"BusinessShortNumber" %in% names(Tous_Geschaefte)) {
