@@ -38,7 +38,6 @@ A monitoring tool tracking mentions of the canton of Jura and related topics in 
 - **"New" indicator** — Green left border on cards updated within the last 4 days
 - **Filter by elected member** — On the *Nos élus* page, clicking an elected official's card filters both objects and debates simultaneously
 - **Jura mention detection** — Objects where Jura is explicitly cited (by the author or in the Federal Council's response) are flagged with emoji indicators (🧑 / 🏛️)
-- **Baume-Schneider filter** — Federal Councillor interventions are excluded from debates unless they explicitly mention Jura
 - **PWA support** — Installable as a Progressive Web App on mobile devices
 
 ---
