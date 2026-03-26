@@ -34,28 +34,36 @@ function translateParty(party) {
     return translations[party] || party;
 }
 
-// Traduction des auteurs (groupes parlementaires → parti)
+// Traduction des auteurs (groupes parlementaires → nom FR + parti)
 function translateAuthor(author) {
     if (!author || author === 'null' || author === 'None') return '';
     const translations = {
-        'Grüne Fraktion': 'VERT-E-S',
-        'Fraktion der Schweizerischen Volkspartei': 'UDC',
-        'SVP-Fraktion': 'UDC',
-        'FDP-Liberale Fraktion': 'PLR',
-        'Sozialdemokratische Fraktion': 'PS',
-        'Fraktion der Mitte': 'Le Centre',
-        'Die Mitte-Fraktion. Die Mitte. EVP.': 'Le Centre',
-        'Grünliberale Fraktion': 'Vert\'libéraux',
-        'Groupe des VERT-E-S': 'VERT-E-S',
-        'Groupe de l\'Union démocratique du centre': 'UDC',
-        'Groupe libéral-radical': 'PLR',
-        'Groupe socialiste': 'PS',
-        'Groupe du Centre': 'Le Centre',
-        'Groupe vert\'libéral': 'Vert\'libéraux',
-        'Sicherheitspolitische Kommission Nationalrat': 'Commission sécurité CN',
-        'Sicherheitspolitische Kommission Ständerat': 'Commission sécurité CE'
+        'Grüne Fraktion': { nom: 'Groupe des VERT-E-S', parti: 'VERT-E-S' },
+        'Fraktion der Schweizerischen Volkspartei': { nom: 'Groupe de l\'Union démocratique du centre', parti: 'UDC' },
+        'SVP-Fraktion': { nom: 'Groupe UDC', parti: 'UDC' },
+        'FDP-Liberale Fraktion': { nom: 'Groupe libéral-radical', parti: 'PLR' },
+        'Sozialdemokratische Fraktion': { nom: 'Groupe socialiste', parti: 'PS' },
+        'Fraktion der Mitte': { nom: 'Groupe du Centre', parti: 'Le Centre' },
+        'Die Mitte-Fraktion. Die Mitte. EVP.': { nom: 'Groupe du Centre', parti: 'Le Centre' },
+        'Grünliberale Fraktion': { nom: 'Groupe vert\'libéral', parti: 'Vert\'libéraux' },
+        'Sicherheitspolitische Kommission Nationalrat': { nom: 'Commission sécurité CN', parti: null },
+        'Sicherheitspolitische Kommission Ständerat': { nom: 'Commission sécurité CE', parti: null }
     };
-    return translations[author] || author;
+    const t = translations[author];
+    if (t) {
+        return t.parti ? { nom: t.nom, parti: t.parti } : { nom: t.nom, parti: null };
+    }
+    return { nom: author, parti: null };
+}
+
+// Affichage de l'auteur: si c'est un groupe, afficher "Groupe X (Parti)"
+function getAuthorDisplay(author, party) {
+    if (!author || author === 'null' || author === 'None') return '';
+    const translated = translateAuthor(author);
+    if (typeof translated === 'object' && translated.parti) {
+        return `${translated.nom} (${translated.parti})`;
+    }
+    return typeof translated === 'object' ? translated.nom : author;
 }
 
 // Vérifier si le titre est manquant
@@ -638,7 +646,7 @@ function displayNewObjectsDuringSession(allItems, newIds, activeSession) {
                 <div class="card-title">${displayTitle}</div>
                 ${langWarning}
                 <div class="card-footer">
-                    <span class="card-author">${translateAuthor(item.author)}</span>
+                    <span class="card-author">${getAuthorDisplay(item.author, party)}</span>
                     <span class="card-party" style="background: ${partyColor};">${party}</span>
                     <span class="card-mention" title="${mentionData.tooltip}">${mentionData.emojis}</span>
                 </div>
@@ -706,7 +714,7 @@ function displayObjectsList(summary, newIds = [], allItems = []) {
                 <div class="card-title">${displayTitle}</div>
                 ${langWarning}
                 <div class="card-footer">
-                    <span class="card-author">${translateAuthor(interventions.author[i])}</span>
+                    <span class="card-author">${getAuthorDisplay(interventions.author[i], party)}</span>
                     <span class="card-party" style="background: ${partyColor};">${party}</span>
                     <span class="card-mention" title="${mentionData.tooltip}">${mentionData.emojis}</span>
                 </div>
