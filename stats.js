@@ -288,12 +288,11 @@ function populateObjectFilters() {
     setupDropdown('objectPartyDropdown');
     setupDropdown('objectDeptDropdown');
     setupDropdown('objectTagsDropdown');
-    setupDropdown('objectLegislatureDropdown');
     setupDropdown('objectMentionDropdown');
 }
 
 function setupObjectFilterListeners() {
-    ['objectYearDropdown', 'objectCouncilDropdown', 'objectPartyDropdown', 'objectDeptDropdown', 'objectTagsDropdown', 'objectLegislatureDropdown', 'objectMentionDropdown'].forEach(id => {
+    ['objectYearDropdown', 'objectCouncilDropdown', 'objectPartyDropdown', 'objectDeptDropdown', 'objectTagsDropdown', 'objectMentionDropdown'].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.addEventListener('change', applyObjectFilters);
     });
@@ -301,7 +300,7 @@ function setupObjectFilterListeners() {
 }
 
 function resetObjectFilters() {
-    ['objectYearDropdown', 'objectCouncilDropdown', 'objectPartyDropdown', 'objectDeptDropdown', 'objectTagsDropdown', 'objectLegislatureDropdown', 'objectMentionDropdown'].forEach(id => {
+    ['objectYearDropdown', 'objectCouncilDropdown', 'objectPartyDropdown', 'objectDeptDropdown', 'objectTagsDropdown', 'objectMentionDropdown'].forEach(id => {
         const dropdown = document.getElementById(id);
         if (!dropdown) return;
         const selectAll = dropdown.querySelector('[data-select-all]');
@@ -514,11 +513,10 @@ function populateDebateFilters() {
     setupDropdown('debatePartyDropdown');
     setupDropdown('debateDeptDropdown');
     setupDropdown('debateTagsDropdown');
-    setupDropdown('debateLegislatureDropdown');
 }
 
 function setupDebateFilterListeners() {
-    ['debateYearDropdown', 'debateSessionDropdown', 'debateCouncilDropdown', 'debatePartyDropdown', 'debateDeptDropdown', 'debateTagsDropdown', 'debateLegislatureDropdown'].forEach(id => {
+    ['debateYearDropdown', 'debateSessionDropdown', 'debateCouncilDropdown', 'debatePartyDropdown', 'debateDeptDropdown', 'debateTagsDropdown'].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.addEventListener('change', applyDebateFilters);
     });
@@ -526,7 +524,7 @@ function setupDebateFilterListeners() {
 }
 
 function resetDebateFilters() {
-    ['debateYearDropdown', 'debateSessionDropdown', 'debateCouncilDropdown', 'debatePartyDropdown', 'debateDeptDropdown', 'debateTagsDropdown', 'debateLegislatureDropdown'].forEach(id => {
+    ['debateYearDropdown', 'debateSessionDropdown', 'debateCouncilDropdown', 'debatePartyDropdown', 'debateDeptDropdown', 'debateTagsDropdown'].forEach(id => {
         const dropdown = document.getElementById(id);
         if (!dropdown) return;
         const selectAll = dropdown.querySelector('[data-select-all]');
