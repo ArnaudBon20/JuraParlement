@@ -224,6 +224,11 @@ function getSessionTypeFromDate(dateStr) {
     return 'autre';
 }
 
+const partyColors = {
+    'UDC': '#009F4D', 'PS': '#E41019', 'PLR': '#0066CC',
+    'Le Centre': '#FF9900', 'VERT-E-S': '#84B414', "Vert'libéraux": '#A8CF45'
+};
+
 function translateParty(party) {
     const translations = {
         'Al': 'VERT-E-S',
@@ -880,9 +885,10 @@ function createCard(item, searchTerm) {
     const langWarning = frMissing && item.title_de ? '<span class="lang-warning">🌐 Uniquement en allemand</span>' : '';
     
     const authorName = translateAuthor(item.author || '');
-    const partyFR = translateParty(item.party || '');
-    const authorWithParty = partyFR ? `${authorName} (${partyFR})` : authorName;
-    const author = highlightText(authorWithParty, searchTerm);
+    const partyFR = translateParty(item.party || '') || getPartyFromAuthor(item.author);
+    const author = highlightText(authorName, searchTerm);
+    const partyColor = partyColors[partyFR] || '#6B7280';
+    const partyBadge = partyFR ? `<span class="card-party-badge" style="background:${partyColor};">${partyFR}</span>` : '';
     
     // Bande verte si mise à jour < 4 jours
     const now = new Date();
@@ -924,6 +930,7 @@ function createCard(item, searchTerm) {
             ${langWarning}
             <div class="card-meta">
                 <span>👤 ${author}</span>
+                ${partyBadge}
                 <span>📅 ${date}</span>
             </div>
             ${item.status ? `<div style="margin-top: 0.5rem;"><span class="badge ${statusClass}">${getStatusFR(item.status)}</span></div>` : ''}

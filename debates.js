@@ -55,6 +55,11 @@ const councilLabels = {
     'V': 'Assemblée fédérale'
 };
 
+const partyColors = {
+    'UDC': '#009F4D', 'PS': '#E41019', 'PLR': '#0066CC',
+    'Le Centre': '#FF9900', 'VERT-E-S': '#84B414', "Vert'libéraux": '#A8CF45'
+};
+
 const partyLabels = {
     'V': 'UDC',
     'S': 'PS',
@@ -134,10 +139,15 @@ function searchWholeWord(text, term) {
 }
 
 function getPartyDisplay(item) {
-    if (!item.party || item.party === 'undefined' || item.party === '') {
-        return 'Conseil fédéral';
-    }
+    if (!item.party || item.party === 'undefined' || item.party === '') return null;
     return partyLabels[item.party] || item.party;
+}
+
+function getPartyBadge(item) {
+    const party = getPartyDisplay(item);
+    if (!party) return '';
+    const color = partyColors[party] || '#6B7280';
+    return `<span class="card-party-badge" style="background:${color};">${party}</span>`;
 }
 
 async function init() {
@@ -847,19 +857,20 @@ function createCard(item, searchTerm = '') {
         : businessTitle;
     
     // Speaker sans lien
-    const speakerText = `${item.speaker} (${partyDisplay}, ${item.canton || ''})`;
+    const speakerText = `${item.speaker}${item.canton ? ` (${item.canton})` : ''}`;
     
     card.innerHTML = `
         <div class="card-header">
-            ${businessNumberLink}
-            <div class="card-badges">
+            <div class="card-header-left">
                 <span class="badge badge-council">${councilDisplay}</span>
                 ${getThemeBadgesDebate(item)}
             </div>
+            ${businessNumberLink}
         </div>
         <h3 class="card-title">${businessTitleLink}</h3>
         <div class="card-meta">
             <span>💬 ${speakerText}</span>
+            ${getPartyBadge(item)}
             <span>📅 ${formatDate(item.date)}</span>
         </div>
         <div class="card-text">${highlightCDF(textPreview, searchTerm)}</div>
