@@ -80,6 +80,21 @@ function isSpeakerJurassien(speaker, canton) {
     return ELUS_JURASSIENS.some(elu => elu.pattern.test(speaker));
 }
 
+// Exclure Baume-Schneider CF (après 2023) sauf si mention Jura
+function shouldIncludeDebat(item) {
+    const speaker = item.speaker || '';
+    const text = (item.text || '').toLowerCase();
+    const dateStr = String(item.date || '');
+    const year = parseInt(dateStr.substring(0, 4)) || 0;
+    
+    // Si c'est Baume-Schneider après 2023 (CF)
+    if (speaker.includes('Baume') && year >= 2023) {
+        // Garder seulement si mention du Jura
+        return text.includes('jura') || text.includes('jurassien') || text.includes('jurassienne');
+    }
+    return true;
+}
+
 // Trouver quel élu correspond
 function findElu(text) {
     if (!text) return null;
@@ -108,8 +123,10 @@ async function init() {
         const debatsJson = await debatsResponse.json();
         allDebats = debatsJson.items || [];
         
-        // Filtrer les débats des élus jurassiens
-        filteredDebats = allDebats.filter(item => isSpeakerJurassien(item.speaker, item.canton));
+        // Filtrer les débats des élus jurassiens (exclure Baume-Schneider CF)
+        filteredDebats = allDebats.filter(item => 
+            isSpeakerJurassien(item.speaker, item.canton) && shouldIncludeDebat(item)
+        );
         filteredDebats.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
         
         // Afficher les stats
@@ -291,7 +308,7 @@ function createDebatCard(item) {
             ${bulletinUrl ? `<a href="${bulletinUrl}" target="_blank">${item.business_title_fr || item.business_title || 'Débat'}</a>` : (item.business_title_fr || item.business_title || 'Débat')}
         </h3>
         <div class="card-meta">
-            <span>� ${item.speaker}</span>
+            <span>👤 ${item.speaker}</span>
             <span style="background: ${partyColor}; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem;">${party}</span>
             <span>📅 ${formattedDate}</span>
         </div>
