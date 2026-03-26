@@ -38,11 +38,12 @@ body {
 
 /* Header */
 header {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-    color: white;
+    background: #ffffff;
+    color: #1D5C9E;
     padding: 1.5rem 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     position: relative;
+    border-top: 4px solid #D00000;
 }
 
 header h1 {
