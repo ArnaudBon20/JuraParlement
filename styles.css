@@ -2802,45 +2802,31 @@ a.author-row {
 }
 
 .theme-toggle-btn {
-    padding: 0.3rem 0.75rem;
-    border-radius: 20px;
-    border: 2px solid transparent;
-    background: transparent;
-    font-size: 0.78rem;
-    font-weight: 600;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: white;
+    height: 36px;
     cursor: pointer;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
     transition: background 0.15s, color 0.15s, border-color 0.15s;
     font-family: inherit;
 }
 
-.theme-toggle-btn.badge-theme-jura {
-    border-color: #1D5C9E;
-    color: #1D5C9E;
-}
-.theme-toggle-btn.badge-theme-moutier {
-    border-color: #7C3AED;
-    color: #7C3AED;
-}
-.theme-toggle-btn.badge-theme-rpt {
-    border-color: #B45309;
-    color: #B45309;
-}
+.theme-toggle-btn.badge-theme-jura        { border-color: #1D5C9E; color: #1D5C9E; }
+.theme-toggle-btn.badge-theme-moutier     { border-color: #7C3AED; color: #7C3AED; }
+.theme-toggle-btn.badge-theme-rpt         { border-color: #B45309; color: #B45309; }
 
 .theme-toggle-btn.badge-theme-jura:hover,
-.theme-toggle-btn.badge-theme-jura.active {
-    background: #1D5C9E;
-    color: white;
-}
+.theme-toggle-btn.badge-theme-jura.active   { background: #1D5C9E; color: white; }
 .theme-toggle-btn.badge-theme-moutier:hover,
-.theme-toggle-btn.badge-theme-moutier.active {
-    background: #7C3AED;
-    color: white;
-}
+.theme-toggle-btn.badge-theme-moutier.active { background: #7C3AED; color: white; }
 .theme-toggle-btn.badge-theme-rpt:hover,
-.theme-toggle-btn.badge-theme-rpt.active {
-    background: #B45309;
-    color: white;
-}
+.theme-toggle-btn.badge-theme-rpt.active    { background: #B45309; color: white; }
 
 /* Carte élu active (filtre appliqué) */
 .elu-card-filter {
