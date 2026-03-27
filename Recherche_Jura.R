@@ -1004,7 +1004,7 @@ if (!is.null(Resultats) && nrow(Resultats) > 0) {
         "Während der ", derniere_session$name_de, " (",
         format(derniere_session$start, "%d.%m"), " - ",
         format(derniere_session$end, "%d.%m.%Y"), ") wurden ",
-        nrow(interventions_session), " Vorstösse mit Bezug zum Kanton Jura oder zum Finanzausgleich (NFA/RPT) eingereicht oder mit einer Antwort des Bundesrates versehen: ",
+        nrow(interventions_session), " Vorstösse mit Bezug zum Kanton Jura oder zum Finanzausgleich (RPT) eingereicht oder mit einer Antwort des Bundesrates versehen: ",
         types_text_de, ". ",
         if (cn_count > 0 && ce_count > 0) {
           paste0(cn_count, " im Nationalrat und ", ce_count, " im Ständerat. ")
