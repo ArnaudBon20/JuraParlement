@@ -49,6 +49,15 @@
       font: inherit;
       font-weight: 700;
       padding: 0.9rem 1.2rem;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+      -webkit-appearance: none;
+      appearance: none;
+      touch-action: manipulation;
       cursor: pointer;
       transition: transform 0.15s ease, opacity 0.15s ease;
     }
@@ -112,16 +121,26 @@
   <script>
     const loginButton = document.getElementById('loginButton');
     const loginError = document.getElementById('loginError');
+    const hasAuthHash = /invite_token|confirmation_token|recovery_token/.test(window.location.hash || '');
+    let widgetOpened = false;
 
     function showError(message) {
       loginError.textContent = message;
       loginError.classList.add('visible');
     }
 
+    function openIdentityWidget() {
+      if (!window.netlifyIdentity || widgetOpened) return;
+      widgetOpened = true;
+      window.netlifyIdentity.open();
+    }
+
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on('init', user => {
         if (user) {
           window.location.replace('/home.html');
+        } else {
+          window.setTimeout(openIdentityWidget, hasAuthHash ? 50 : 150);
         }
       });
 
@@ -129,15 +148,20 @@
         window.location.replace('/home.html');
       });
 
+      window.netlifyIdentity.on('close', () => {
+        widgetOpened = false;
+      });
+
       window.netlifyIdentity.on('error', err => {
         showError(err && err.message ? err.message : 'La connexion Netlify Identity a échoué.');
+        widgetOpened = false;
       });
 
       window.netlifyIdentity.init();
 
       loginButton.addEventListener('click', () => {
         loginError.classList.remove('visible');
-        window.netlifyIdentity.open('login');
+        openIdentityWidget();
       });
     } else {
       loginButton.classList.add('is-disabled');
