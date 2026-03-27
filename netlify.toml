@@ -1,11 +1,53 @@
 [[redirects]]
-  from = "/*"
+  from = "/login"
+  to = "/login.html"
+  status = 200
+
+[[redirects]]
+  from = "/"
   to = "/login.html"
   status = 302
+  force = true
   conditions = {Role = ["visitor"]}
 
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  conditions = {Role = ["member"]}
+  from = "/index.html"
+  to = "/login.html"
+  status = 302
+  force = true
+  conditions = {Role = ["visitor"]}
+
+[[redirects]]
+  from = "/home.html"
+  to = "/login.html"
+  status = 302
+  force = true
+  conditions = {Role = ["visitor"]}
+
+[[redirects]]
+  from = "/objects.html"
+  to = "/login.html"
+  status = 302
+  force = true
+  conditions = {Role = ["visitor"]}
+
+[[redirects]]
+  from = "/debates.html"
+  to = "/login.html"
+  status = 302
+  force = true
+  conditions = {Role = ["visitor"]}
+
+[[redirects]]
+  from = "/elus.html"
+  to = "/login.html"
+  status = 302
+  force = true
+  conditions = {Role = ["visitor"]}
+
+[[redirects]]
+  from = "/stats.html"
+  to = "/login.html"
+  status = 302
+  force = true
+  conditions = {Role = ["visitor"]}
