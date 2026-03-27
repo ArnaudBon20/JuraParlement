@@ -96,7 +96,7 @@
       <h2>Connexion</h2>
       <p>Connecte-toi avec Netlify Identity pour accéder au site.</p>
       <div class="login-actions">
-        <div id="loginButton" class="login-button" data-netlify-identity-button role="button" tabindex="0">Se connecter</div>
+        <button id="loginButton" class="login-button" type="button">Se connecter</button>
         <div id="loginError" class="login-error"></div>
       </div>
     </section>
@@ -134,6 +134,11 @@
       });
 
       window.netlifyIdentity.init();
+
+      loginButton.addEventListener('click', () => {
+        loginError.classList.remove('visible');
+        window.netlifyIdentity.open('login');
+      });
     } else {
       loginButton.classList.add('is-disabled');
       showError('Le widget Netlify Identity ne s’est pas chargé. Vérifie que Netlify Identity est bien activé pour ce site.');
