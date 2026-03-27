@@ -58,6 +58,13 @@
       transform: translateY(-1px);
     }
 
+    .login-button.is-disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      pointer-events: none;
+      transform: none;
+    }
+
     .login-error {
       display: none;
       color: #b91c1c;
@@ -89,7 +96,7 @@
       <h2>Connexion</h2>
       <p>Connecte-toi avec Netlify Identity pour accéder au site.</p>
       <div class="login-actions">
-        <button id="loginButton" class="login-button" type="button">Se connecter</button>
+        <div id="loginButton" class="login-button" data-netlify-identity-button role="button" tabindex="0">Se connecter</div>
         <div id="loginError" class="login-error"></div>
       </div>
     </section>
@@ -105,10 +112,6 @@
   <script>
     const loginButton = document.getElementById('loginButton');
     const loginError = document.getElementById('loginError');
-    const currentHash = window.location.hash || '';
-    const hasInviteToken = currentHash.includes('invite_token');
-    const hasConfirmationToken = currentHash.includes('confirmation_token');
-    const hasRecoveryToken = currentHash.includes('recovery_token');
 
     function showError(message) {
       loginError.textContent = message;
@@ -131,19 +134,8 @@
       });
 
       window.netlifyIdentity.init();
-
-      loginButton.addEventListener('click', () => {
-        loginError.classList.remove('visible');
-        window.netlifyIdentity.open('login');
-      });
-
-      if (hasInviteToken || hasConfirmationToken) {
-        window.netlifyIdentity.open('signup');
-      } else if (hasRecoveryToken) {
-        window.netlifyIdentity.open('login');
-      }
     } else {
-      loginButton.disabled = true;
+      loginButton.classList.add('is-disabled');
       showError('Le widget Netlify Identity ne s’est pas chargé. Vérifie que Netlify Identity est bien activé pour ce site.');
     }
   </script>
