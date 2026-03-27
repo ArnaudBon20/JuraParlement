@@ -189,9 +189,10 @@ if (file.exists(FICHIER_EXCEL)) {
   
   n_avant <- nrow(Donnees_Existantes)
   Donnees_Existantes <- Donnees_Existantes |>
-    filter(!Numéro %in% faux_positifs)
+    filter(!Numéro %in% faux_positifs) |>
+    filter(is.na(Auteur) | !str_detect(Auteur, AUTEURS_EXCLUS))
   if (nrow(Donnees_Existantes) < n_avant) {
-    cat("  -> Exclusion de", n_avant - nrow(Donnees_Existantes), "faux positifs\n")
+    cat("  -> Exclusion de", n_avant - nrow(Donnees_Existantes), "faux positifs / auteurs exclus\n")
   }
   
   # Nettoyer les Date_MAJ incorrectes (import initial février 2026 pour objets anciens)
@@ -412,6 +413,10 @@ cat("Fusion et dédoublonnage des interventions...\n")
 
 Tous_Geschaefte <- bind_rows(Geschaefte_DE, Geschaefte_FR, Geschaefte_Elus)
 
+# Exclure les auteurs non-jurassiens connus (faux positifs auteur)
+# Marcel Dobler (St-Gall) ≠ Loïc Dobler (Jura)
+AUTEURS_EXCLUS <- regex("Marcel\\s+Dobler|Dobler\\s+Marcel", ignore_case = TRUE)
+
 # Vérifier si des nouveaux objets ont été trouvés
 if (nrow(Tous_Geschaefte) == 0 || !"BusinessShortNumber" %in% names(Tous_Geschaefte)) {
   cat("Aucun nouvel objet trouvé dans les sessions analysées.\n")
@@ -496,7 +501,8 @@ if (length(IDs_A_Traiter) > 0) {
     select(ID, BusinessShortNumber, BusinessTypeAbbreviation, Title, 
            SubmittedBy, BusinessStatusText, SubmissionDate, SubmissionCouncilAbbreviation,
            ResponsibleDepartmentAbbreviation, ResponsibleDepartmentName,
-           SubmittedText, ReasonText, FederalCouncilResponseText, TagNames)
+           SubmittedText, ReasonText, FederalCouncilResponseText, TagNames) |>
+    filter(is.na(SubmittedBy) | !str_detect(SubmittedBy, AUTEURS_EXCLUS))
   
   Daten_FR <- get_data(table = "Business", ID = IDs_A_Traiter, Language = "FR") |>
     select(ID, Title, BusinessStatusText, SubmittedText, ReasonText, FederalCouncilResponseText, TagNames)

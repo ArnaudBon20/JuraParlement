@@ -254,6 +254,16 @@ if (!is.null(Debats_Tous) && nrow(Debats_Tous) > 0) {
   cat("  -> Exclu:", n_avant - n_apres, "interventions de Baume-Schneider (CF) sans mention Jura\n")
 }
 
+# Exclure Marcel Dobler (St-Gall) ≠ Loïc Dobler (Jura)
+cat("Filtrage des interventions de Marcel Dobler (SG)...\n")
+if (!is.null(Debats_Tous) && nrow(Debats_Tous) > 0) {
+  n_avant <- nrow(Debats_Tous)
+  Debats_Tous <- Debats_Tous |>
+    filter(!str_detect(SpeakerFullName, regex("Marcel\\s+Dobler|Dobler\\s+Marcel", ignore_case = TRUE)))
+  n_apres <- nrow(Debats_Tous)
+  cat("  -> Exclu:", n_avant - n_apres, "interventions de Marcel Dobler (SG)\n")
+}
+
 cat("\nTotal débats scannés:", nrow(Debats_Tous), "\n")
 
 # En mode CI: fusionner avec les données existantes (autres sessions non scannées)
@@ -266,9 +276,11 @@ if (Sys.getenv("CI") == "true" && file.exists(FICHIER_DEBATS_JSON)) {
     anciens_debats <- as_tibble(ancien_json$items)
     
     # Garder les débats des sessions NON scannées cette fois
+    # + Purger Marcel Dobler (SG) des données existantes
     sessions_scannees <- SESSIONS_DEBATS
     anciens_autres_sessions <- anciens_debats |>
-      filter(!id_session %in% sessions_scannees)
+      filter(!id_session %in% sessions_scannees) |>
+      filter(is.na(speaker) | !str_detect(speaker, regex("Marcel\\s+Dobler|Dobler\\s+Marcel", ignore_case = TRUE)))
     
     cat("  -> Débats existants (autres sessions):", nrow(anciens_autres_sessions), "\n")
     cat("  -> Débats scannés (sessions récentes):", nrow(Debats_Tous), "\n")
