@@ -70,16 +70,6 @@
     .login-error.visible {
       display: block;
     }
-
-    [data-netlify-identity-menu] a {
-      color: var(--primary);
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    [data-netlify-identity-menu] a:hover {
-      text-decoration: underline;
-    }
   </style>
 </head>
 <body>
@@ -100,7 +90,6 @@
       <p>Connecte-toi avec Netlify Identity pour accéder au site.</p>
       <div class="login-actions">
         <button id="loginButton" class="login-button" type="button">Se connecter</button>
-        <div data-netlify-identity-menu></div>
         <div id="loginError" class="login-error"></div>
       </div>
     </section>
@@ -116,6 +105,10 @@
   <script>
     const loginButton = document.getElementById('loginButton');
     const loginError = document.getElementById('loginError');
+    const currentHash = window.location.hash || '';
+    const hasInviteToken = currentHash.includes('invite_token');
+    const hasConfirmationToken = currentHash.includes('confirmation_token');
+    const hasRecoveryToken = currentHash.includes('recovery_token');
 
     function showError(message) {
       loginError.textContent = message;
@@ -144,8 +137,10 @@
         window.netlifyIdentity.open('login');
       });
 
-      if (window.location.hash.includes('invite_token') || window.location.hash.includes('confirmation_token') || window.location.hash.includes('recovery_token')) {
-        window.netlifyIdentity.open();
+      if (hasInviteToken || hasConfirmationToken) {
+        window.netlifyIdentity.open('signup');
+      } else if (hasRecoveryToken) {
+        window.netlifyIdentity.open('login');
       }
     } else {
       loginButton.disabled = true;

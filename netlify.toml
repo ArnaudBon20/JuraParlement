@@ -4,6 +4,16 @@
   status = 200
 
 [[redirects]]
+  from = "/admin"
+  to = "/login.html"
+  status = 200
+
+[[redirects]]
+  from = "/admin/*"
+  to = "/login.html"
+  status = 200
+
+[[redirects]]
   from = "/"
   to = "/login.html"
   status = 302
