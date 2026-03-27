@@ -36,6 +36,10 @@ const partyColors = {
     'UDC': '#009F4D', 'VERT-E-S': '#84B414', 'Vert\'libéraux': '#A8CF45'
 };
 
+const JURA_THEME_PATTERN = /\b(jura|jurassien(?:ne)?s?|arc jurassien|jurabogen|courchavon|del[eé]mont)\b/i;
+const MOUTIER_THEME_PATTERN = /\bmoutier\b/i;
+const RPT_THEME_PATTERN = /\b(rpt|nfa|finanzausgleich(?:s)?|péréquation\s*financière)\b/i;
+
 function translateParty(party) {
     const t = { 'V': 'UDC', 'S': 'PS', 'RL': 'PLR', 'M-E': 'Le Centre', 'M': 'Le Centre', 'G': 'VERT-E-S', 'GL': 'Vert\'libéraux', 'BD': 'Le Centre', 'CEg': 'Le Centre' };
     return t[party] || party;
@@ -73,10 +77,14 @@ function findElu(text) {
 // Badges basés UNIQUEMENT sur les mots-clés présents dans le texte
 function getThemeBadges(item) {
     const themes = [];
-    const text = [item.title || '', item.title_de || '', item.text || ''].join(' ');
-    if (/\bjura\b/i.test(text)) themes.push('Jura');
-    if (/\bmoutier\b/i.test(text)) themes.push('Moutier');
-    if (/\b(rpt|nfa|finanzausgleich|péréquation\s*financière)\b/i.test(text)) themes.push('RPT');
+    const text = [item.title || '', item.title_de || '', item.title_it || '', item.text || '', item.text_de || ''].join(' ');
+    const hasRPT = RPT_THEME_PATTERN.test(text);
+    const hasMoutier = MOUTIER_THEME_PATTERN.test(text);
+    const hasExplicitJura = JURA_THEME_PATTERN.test(text);
+    const hasImplicitJura = !hasExplicitJura && !hasRPT && !hasMoutier && item.mention && item.mention !== 'Titre uniquement';
+    if (hasExplicitJura || hasImplicitJura) themes.push('Jura');
+    if (hasMoutier) themes.push('Moutier');
+    if (hasRPT) themes.push('RPT');
     return themes.map(t => `<span class="badge badge-theme badge-theme-${t.toLowerCase()}">${t}</span>`).join('');
 }
 

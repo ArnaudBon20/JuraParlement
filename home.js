@@ -80,6 +80,10 @@ function isTitleMissing(title) {
     return missing.includes(title.toLowerCase().trim());
 }
 
+const JURA_THEME_PATTERN = /\b(jura|jurassien(?:ne)?s?|arc jurassien|jurabogen|courchavon|del[eé]mont)\b/i;
+const MOUTIER_THEME_PATTERN = /\bmoutier\b/i;
+const RPT_THEME_PATTERN = /\b(rpt|nfa|finanzausgleich(?:s)?|péréquation\s*financière)\b/i;
+
 // Fonction pour détecter les thèmes mentionnés dans un objet
 // Badges basés UNIQUEMENT sur les mots-clés présents dans le texte
 function detectThemes(item) {
@@ -87,20 +91,25 @@ function detectThemes(item) {
     const textToSearch = [
         item.title || '',
         item.title_de || '',
+        item.title_it || '',
         item.text || '',
         item.text_de || ''
     ].join(' ');
+    const hasRPT = RPT_THEME_PATTERN.test(textToSearch);
+    const hasMoutier = MOUTIER_THEME_PATTERN.test(textToSearch);
+    const hasExplicitJura = JURA_THEME_PATTERN.test(textToSearch);
+    const hasImplicitJura = !hasExplicitJura && !hasRPT && !hasMoutier && item.mention && item.mention !== 'Titre uniquement';
     
     // Badge Jura: uniquement si le mot "jura" est dans le texte
-    if (/\bjura\b/i.test(textToSearch)) {
+    if (hasExplicitJura || hasImplicitJura) {
         themes.push('Jura');
     }
     // Badge Moutier
-    if (/\bmoutier\b/i.test(textToSearch)) {
+    if (hasMoutier) {
         themes.push('Moutier');
     }
     // Badge RPT (péréquation financière)
-    if (/\b(rpt|nfa|finanzausgleich|péréquation\s*financière)\b/i.test(textToSearch)) {
+    if (hasRPT) {
         themes.push('RPT');
     }
     

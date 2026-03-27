@@ -1,5 +1,6 @@
 const INITIAL_ITEMS = 5;
 const ITEMS_PER_LOAD = 5;
+const RPT_THEME_PATTERN = /\b(rpt|nfa|finanzausgleich(?:s)?|péréquation\s*financière)\b/i;
 
 // Fonction pour détecter les thèmes mentionnés dans un débat
 function detectThemesDebate(item) {
@@ -16,7 +17,7 @@ function detectThemesDebate(item) {
     if (/\bmoutier\b/i.test(textToSearch)) {
         themes.push('Moutier');
     }
-    if (/\b(rpt|nfa|finanzausgleich|péréquation\s*financière)\b/i.test(textToSearch)) {
+    if (RPT_THEME_PATTERN.test(textToSearch)) {
         themes.push('RPT');
     }
     
