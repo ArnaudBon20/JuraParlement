@@ -1,6 +1,6 @@
 {
   "meta": {
-    "updated": "2026-04-02T12:53:49",
+    "updated": "2026-04-02T21:39:37",
     "total_count": 137,
     "source": "Swiss Parliament API",
     "legislature": 52,
@@ -42,6 +42,28 @@
     }
   },
   "items": [
+    {
+      "shortId": "25.4774",
+      "title": "Extrémisme violent lors de manifestations. Prise en charge des frais par les organisateurs",
+      "title_de": "Gewalttätiger Extremismus bei Demonstrationen. Veranstalter sollen die Kosten übernehmen",
+      "title_it": "Estremismo violento durante manifestazioni. Addossare i costi agli organizzatori",
+      "author": "Juillard Charles",
+      "party": "Le Centre",
+      "type": "Mo.",
+      "status": "In Kommission des Nationalrats / En commission du Conseil national",
+      "council": "SR",
+      "department": "EJPD",
+      "date": "2025-12-19",
+      "date_maj": "2026-04-02",
+      "url_fr": "https://www.parlament.ch/fr/ratsbetrieb/suche-curia-vista/geschaeft?AffairId=20254774",
+      "url_de": "https://www.parlament.ch/de/ratsbetrieb/suche-curia-vista/geschaeft?AffairId=20254774",
+      "mention": "Titre uniquement",
+      "text": "<p>Le Conseil fédéral est chargé d'élaborer une base légale fédérale pour permettre aux collectivités publiques de percevoir auprès des organisateurs d'une manifestation la prise en charge de tout ou partie des frais de sécurité et d'intervention.<\/p>",
+      "text_de": "<p>Der Bundesrat wird beauftragt, eine bundesrechtliche Grundlage zu schaffen, damit die Veranstalter von Demonstrationen die Sicherheits- und Interventionskosten ganz oder teilweise tragen müssen.<\/p>",
+      "tags": "Politique d'Etat|Politique de sécurité|Questions sociales",
+      "tags_de": "Staatspolitik|Sicherheitspolitik|Soziale Fragen",
+      "tags_it": "Politica nazionale|Politica di sicurezza|Questioni sociali"
+    },
     {
       "shortId": "26.3374",
       "title": "Titre suit",
@@ -351,29 +373,6 @@
       "tags": "Finances",
       "tags_de": "Finanzwesen",
       "tags_it": "Finanze"
-    },
-    {
-      "shortId": "25.4774",
-      "title": "Extrémisme violent lors de manifestations. Prise en charge des frais par les organisateurs",
-      "title_de": "Gewalttätiger Extremismus bei Demonstrationen. Veranstalter sollen die Kosten übernehmen",
-      "title_it": "Estremismo violento durante manifestazioni. Addossare i costi agli organizzatori",
-      "author": "Juillard Charles",
-      "party": "Le Centre",
-      "type": "Mo.",
-      "status": "In Kommission des Nationalrats / En commission du Conseil national",
-      "council": "SR",
-      "department": "EJPD",
-      "date": "2025-12-19",
-      "date_maj": "2026-04-02",
-      "statut_change_date": "2026-04-02",
-      "url_fr": "https://www.parlament.ch/fr/ratsbetrieb/suche-curia-vista/geschaeft?AffairId=20254774",
-      "url_de": "https://www.parlament.ch/de/ratsbetrieb/suche-curia-vista/geschaeft?AffairId=20254774",
-      "mention": "Titre uniquement",
-      "text": "<p>Le Conseil fédéral est chargé d'élaborer une base légale fédérale pour permettre aux collectivités publiques de percevoir auprès des organisateurs d'une manifestation la prise en charge de tout ou partie des frais de sécurité et d'intervention.<\/p>",
-      "text_de": "<p>Der Bundesrat wird beauftragt, eine bundesrechtliche Grundlage zu schaffen, damit die Veranstalter von Demonstrationen die Sicherheits- und Interventionskosten ganz oder teilweise tragen müssen.<\/p>",
-      "tags": "Politique d'Etat|Politique de sécurité|Questions sociales",
-      "tags_de": "Staatspolitik|Sicherheitspolitik|Soziale Fragen",
-      "tags_it": "Politica nazionale|Politica di sicurezza|Questioni sociali"
     },
     {
       "shortId": "25.4836",
