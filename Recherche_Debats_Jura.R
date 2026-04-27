@@ -234,7 +234,7 @@ for (session_id in SESSIONS_DEBATS) {
 if (!is.null(Debats_Tous) && nrow(Debats_Tous) > 0) {
   Debats_Tous <- Debats_Tous |>
     distinct(ID, .keep_all = TRUE) |>
-    mutate(MeetingDate = as.Date(substr(MeetingDate, 1, 10)))
+    mutate(MeetingDate = as.Date(as.character(MeetingDate), format = "%Y%m%d"))
 }
 
 # Exclure Baume-Schneider quand elle est conseillère fédérale, SAUF si elle mentionne le Jura
