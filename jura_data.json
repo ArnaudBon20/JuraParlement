@@ -1,6 +1,6 @@
 {
   "meta": {
-    "updated": "2026-05-13T22:12:02",
+    "updated": "2026-05-14T13:34:31",
     "total_count": 138,
     "source": "Swiss Parliament API",
     "legislature": 52,
@@ -50,6 +50,28 @@
       "tags": "Économie|Questions sociales|Médias et communication|Santé",
       "tags_de": "Wirtschaft|Soziale Fragen|Medien und Kommunikation|Gesundheit",
       "tags_it": "Economia|Questioni sociali|Media e comunicazione|Salute"
+    },
+    {
+      "shortId": "26.3454",
+      "title": "Qualité de vie améliorée grâce aux projets de contournement de la N18",
+      "title_de": "Verbesserte Lebensqualität dank den Umfahrungsprojekten entlang der N18",
+      "title_it": "Migliore qualità di vita grazie ai progetti di circonvallazione sulla N18",
+      "author": "Stettler Thomas",
+      "party": "UDC",
+      "type": "Ip.",
+      "status": "Stellungnahme zum Vorstoss liegt vor / L’avis relatif à l’intervention est disponible",
+      "council": "NR",
+      "department": "UVEK",
+      "date": "2026-03-20",
+      "date_maj": "2026-05-13",
+      "url_fr": "https://www.parlament.ch/fr/ratsbetrieb/suche-curia-vista/geschaeft?AffairId=20263454",
+      "url_de": "https://www.parlament.ch/de/ratsbetrieb/suche-curia-vista/geschaeft?AffairId=20263454",
+      "mention": "Titre uniquement",
+      "text": "<p>Fin janvier 2026, le Conseil fédéral a publié les lignes directrices de «&nbsp;<i>Transports ’45&nbsp;»<\/i>. Selon ces derniers, les projets routiers prévus le long de la route nationale 18 entre Bâle et Delémont – à l’exception de la décharge du centre de Laufon (horizon 2055) – devraient être reportés à une période postérieure à 2055. Cette perspective suscite une vive incompréhension dans la région. Elle équivaut en effet à renoncer, pour plusieurs décennies, à une amélioration de l’accessibilité et, par conséquent, à de réelles perspectives de développement économique. Elle contredit en outre directement les résultats de l’étude de corridor N18, menée sous la conduite de l’OFROU selon les méthodes les plus récentes et soutenue par un large partenariat.<\/p><p>La N18 constitue un maillon essentiel du réseau routier national. Elle relie l’agglomération bâloise à l’Arc lémanique et dessert le Laufonnais, en plein essor, ainsi que Delémont, chef-lieu cantonal. En raison de la croissance démographique, ce tronçon devient toutefois un goulet d’étranglement, présentant l’une des charges de trafic et densités de bouchons les plus élevées du pays. La situation actuelle affecte par ailleurs fortement la qualité de vie dans les centres des localités et compromet la sécurité du trafic motorisé et cycliste. La population souffre quotidiennement des embouteillages et du trafic intense des poids lourds traversant les localités, comme en témoignent les nombreux participants aux forums de la mobilité de Laufon. Une évolution rapide du corridor apparaît dès lors indispensable.<\/p><p>Dans ce contexte, le Conseil fédéral est prié de répondre aux questions suivantes :<\/p><ol style=\"list-style-type:decimal;\"><li>Comment évalue-t-il les effets du trafic de transit – en particulier des poids lourds – sur le développement du milieu bâti ainsi que sur la qualité de séjour et d’habitation à Delémont, Laufon et Zwingen ?<\/li><li>Considère-t-il les projets de contournement Laufon–Zwingen et Delémont comme des mesures appropriées pour réduire les nuisances dans les zones urbanisées concernées ?<\/li><li>Estime-t-il nécessaires des mesures visant à améliorer la desserte des zones d’emplois à Delémont ainsi que dans le Laufonnais ?<\/li><\/ol>",
+      "text_de": "<p>Ende Januar 2026 veröffentlichte der Bundesrat die Eckwerte von <i>«Verkehr ’45»<\/i>. Die geplanten Strassenbauprojekte entlang der Nationalstrasse 18 zwischen Basel und Delsberg – mit Ausnahme der Entlastung des Zentrums von Laufen (bis 2055) – sollen auf einen Zeitpunkt nach 2055 verschoben werden. Diese Aussichten stossen in der Region auf grosses Unverständnis. Der Entscheid bedeutet nämlich, dass für mehrere Jahrzehnte auf eine Verbesserung der Erreichbarkeit und damit auf echte Perspektiven für die wirtschaftliche Entwicklung verzichtet wird. Zudem steht er in direktem Widerspruch zu den Ergebnissen der Korridorstudie N18, die unter der Leitung des ASTRA nach den neuesten Methoden durchgeführt und von einer breiten Partnerschaft unterstützt wurde.<\/p><p>Die N18 ist ein wesentlicher Abschnitt des nationalen Strassennetzes. Sie verbindet den Grossraum Basel mit der Genferseeregion und bedient das aufstrebende Laufental sowie die Kantonshauptstadt Delsberg. Aufgrund des Bevölkerungswachstums entwickelt sich dieser Abschnitt jedoch zu einem Engpass und weist eine der höchsten Verkehrsbelastungen und Staudichten des Landes auf. Die derzeitige Situation beeinträchtigt zudem erheblich die Lebensqualität in den Ortskernen und gefährdet die Sicherheit des motorisierten Verkers und des Veloverkehrs. Die Bevölkerung leidet täglich unter den Staus und dem starken Lastwagenverkehr, der durch die Ortschaften rollt, wie die zahlreichen Teilnehmer und Teilnehmerinnen der Mobilitätsforen in Laufen bezeugen. Eine rasche Weiterentwicklung des Korridors erscheint daher unerlässlich.<\/p><p>Vor diesem Hintergrund bitte ich den Bundesrat um die Beantwortung der folgenden Fragen:<\/p><ol style=\"list-style-type:decimal;\"><li>Wie bewertet er die Auswirkungen des Transitverkehrs – insbesondere des Schwerverkehrs – auf die Siedlungsentwicklung sowie auf die Lebens- und Wohnqualität in Delsberg, Laufen und Zwingen?<\/li><li>Erachtet er die Umfahrungsprojekte Laufen–Zwingen und Delsberg als geeignete Massnahmen zur Verringerung der Belastungen in den betroffenen Siedlungsgebieten?<\/li><li>Hält er Massnahmen zur Verbesserung der Verkehrsanbindung der Arbeitszonen in Delsberg sowie im Laufental für notwendig?<\/li><\/ol>",
+      "tags": "Transports",
+      "tags_de": "Verkehr",
+      "tags_it": "Trasporti"
     },
     {
       "shortId": "26.3192",
@@ -182,29 +204,6 @@
       "tags": "Politique d'Etat|Politique de sécurité|Questions sociales",
       "tags_de": "Staatspolitik|Sicherheitspolitik|Soziale Fragen",
       "tags_it": "Politica nazionale|Politica di sicurezza|Questioni sociali"
-    },
-    {
-      "shortId": "26.3454",
-      "title": "Qualité de vie améliorée grâce aux projets de contournement de la N18",
-      "title_de": "Verbesserte Lebensqualität dank den Umfahrungsprojekten entlang der N18",
-      "title_it": "Migliore qualità di vita grazie ai progetti di circonvallazione sulla N18",
-      "author": "Stettler Thomas",
-      "party": "UDC",
-      "type": "Ip.",
-      "status": "Stellungnahme zum Vorstoss liegt vor / L’avis relatif à l’intervention est disponible",
-      "council": "NR",
-      "department": "UVEK",
-      "date": "2026-03-20",
-      "date_maj": "2026-05-13",
-      "statut_change_date": "2026-05-13",
-      "url_fr": "https://www.parlament.ch/fr/ratsbetrieb/suche-curia-vista/geschaeft?AffairId=20263454",
-      "url_de": "https://www.parlament.ch/de/ratsbetrieb/suche-curia-vista/geschaeft?AffairId=20263454",
-      "mention": "Titre uniquement",
-      "text": "<p>Fin janvier 2026, le Conseil fédéral a publié les lignes directrices de «&nbsp;<i>Transports ’45&nbsp;»<\/i>. Selon ces derniers, les projets routiers prévus le long de la route nationale 18 entre Bâle et Delémont – à l’exception de la décharge du centre de Laufon (horizon 2055) – devraient être reportés à une période postérieure à 2055. Cette perspective suscite une vive incompréhension dans la région. Elle équivaut en effet à renoncer, pour plusieurs décennies, à une amélioration de l’accessibilité et, par conséquent, à de réelles perspectives de développement économique. Elle contredit en outre directement les résultats de l’étude de corridor N18, menée sous la conduite de l’OFROU selon les méthodes les plus récentes et soutenue par un large partenariat.<\/p><p>La N18 constitue un maillon essentiel du réseau routier national. Elle relie l’agglomération bâloise à l’Arc lémanique et dessert le Laufonnais, en plein essor, ainsi que Delémont, chef-lieu cantonal. En raison de la croissance démographique, ce tronçon devient toutefois un goulet d’étranglement, présentant l’une des charges de trafic et densités de bouchons les plus élevées du pays. La situation actuelle affecte par ailleurs fortement la qualité de vie dans les centres des localités et compromet la sécurité du trafic motorisé et cycliste. La population souffre quotidiennement des embouteillages et du trafic intense des poids lourds traversant les localités, comme en témoignent les nombreux participants aux forums de la mobilité de Laufon. Une évolution rapide du corridor apparaît dès lors indispensable.<\/p><p>Dans ce contexte, le Conseil fédéral est prié de répondre aux questions suivantes :<\/p><ol style=\"list-style-type:decimal;\"><li>Comment évalue-t-il les effets du trafic de transit – en particulier des poids lourds – sur le développement du milieu bâti ainsi que sur la qualité de séjour et d’habitation à Delémont, Laufon et Zwingen ?<\/li><li>Considère-t-il les projets de contournement Laufon–Zwingen et Delémont comme des mesures appropriées pour réduire les nuisances dans les zones urbanisées concernées ?<\/li><li>Estime-t-il nécessaires des mesures visant à améliorer la desserte des zones d’emplois à Delémont ainsi que dans le Laufonnais ?<\/li><\/ol>",
-      "text_de": "<p>Ende Januar 2026 veröffentlichte der Bundesrat die Eckwerte von <i>«Verkehr ’45»<\/i>. Die geplanten Strassenbauprojekte entlang der Nationalstrasse 18 zwischen Basel und Delsberg – mit Ausnahme der Entlastung des Zentrums von Laufen (bis 2055) – sollen auf einen Zeitpunkt nach 2055 verschoben werden. Diese Aussichten stossen in der Region auf grosses Unverständnis. Der Entscheid bedeutet nämlich, dass für mehrere Jahrzehnte auf eine Verbesserung der Erreichbarkeit und damit auf echte Perspektiven für die wirtschaftliche Entwicklung verzichtet wird. Zudem steht er in direktem Widerspruch zu den Ergebnissen der Korridorstudie N18, die unter der Leitung des ASTRA nach den neuesten Methoden durchgeführt und von einer breiten Partnerschaft unterstützt wurde.<\/p><p>Die N18 ist ein wesentlicher Abschnitt des nationalen Strassennetzes. Sie verbindet den Grossraum Basel mit der Genferseeregion und bedient das aufstrebende Laufental sowie die Kantonshauptstadt Delsberg. Aufgrund des Bevölkerungswachstums entwickelt sich dieser Abschnitt jedoch zu einem Engpass und weist eine der höchsten Verkehrsbelastungen und Staudichten des Landes auf. Die derzeitige Situation beeinträchtigt zudem erheblich die Lebensqualität in den Ortskernen und gefährdet die Sicherheit des motorisierten Verkers und des Veloverkehrs. Die Bevölkerung leidet täglich unter den Staus und dem starken Lastwagenverkehr, der durch die Ortschaften rollt, wie die zahlreichen Teilnehmer und Teilnehmerinnen der Mobilitätsforen in Laufen bezeugen. Eine rasche Weiterentwicklung des Korridors erscheint daher unerlässlich.<\/p><p>Vor diesem Hintergrund bitte ich den Bundesrat um die Beantwortung der folgenden Fragen:<\/p><ol style=\"list-style-type:decimal;\"><li>Wie bewertet er die Auswirkungen des Transitverkehrs – insbesondere des Schwerverkehrs – auf die Siedlungsentwicklung sowie auf die Lebens- und Wohnqualität in Delsberg, Laufen und Zwingen?<\/li><li>Erachtet er die Umfahrungsprojekte Laufen–Zwingen und Delsberg als geeignete Massnahmen zur Verringerung der Belastungen in den betroffenen Siedlungsgebieten?<\/li><li>Hält er Massnahmen zur Verbesserung der Verkehrsanbindung der Arbeitszonen in Delsberg sowie im Laufental für notwendig?<\/li><\/ol>",
-      "tags": "Transports",
-      "tags_de": "Verkehr",
-      "tags_it": "Trasporti"
     },
     {
       "shortId": "26.3228",
